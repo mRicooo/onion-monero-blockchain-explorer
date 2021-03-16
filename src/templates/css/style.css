@@ -213,6 +213,60 @@ a, a:hover, a:visited {
     text-decoration: none;
 }
 
+.section-table .left {
+    text-align: left;
+    padding-left: 15px;
+}
+
+.section-table-alt {
+    margin-top: 2px;
+    background: #252626;
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+}
+
+.section-table-alt tbody td {
+    padding: 5px 15px;
+    text-align: left;
+}
+
+.section-table-alt a {
+    color: white;
+    text-decoration: none;
+}
+
+/* transaction */
+
+.section-infos {
+    background: #252626;
+    padding: 15px 20px
+}
+
+.section-infos+.section-infos {
+    margin-top: 2px;
+}
+
+.section-infos>span {
+    display: block;
+    margin: 4px 0;
+}
+
+#tx-hash, #tx-hash-error {
+    font-size: 18px;
+    color: white
+}
+
+#tx_pub_key {
+    font-size: 12px;
+}
+
+.error-title {
+    font-size: 18px;
+    color: red;
+    margin-bottom: 15px;
+}
+
 /****************/
 
 /* pagination */
@@ -262,6 +316,118 @@ a, a:hover, a:visited {
 
 /****************/
 
+/* tabs */
+
+.tabs {
+    position: relative;
+    min-height: 280px;
+    /* This part sucks */
+    clear: both;
+    margin: 40px 0 25px;
+}
+
+.tab {
+    float: left;
+}
+
+.tab label {
+    background: #252626;
+    padding: 14px 20px;
+    font-size: 12px;
+    position: relative;
+    border-bottom: 1px solid #1C1C1C;
+    cursor: pointer;
+}
+
+.tab [type=radio] {
+    display: none;
+}
+
+.tab+.tab {
+    margin-left: 1px
+}
+
+.content {
+    position: absolute;
+    top: 30px;
+    left: 0;
+    background: #252626;
+    right: 0;
+    bottom: 0;
+    padding: 20px;
+}
+
+[type=radio]:checked~label {
+    color: #6F7CE9;
+    border-bottom: 1px solid #252626;
+    z-index: 2;
+}
+
+[type=radio]:checked~label~.content {
+    z-index: 1;
+}
+
+input#toggle-1[type=checkbox] {
+    position: absolute;
+    left: -9999px;
+}
+
+label#show-decoded-inputs {
+    display: inline-block;
+    cursor: pointer;
+    background-color: #252626;
+    color: white;
+    width: 100%;
+    text-align: center;
+    padding: 14px 20px;
+}
+
 div#decoded-inputs {
     display: none;
+    background: #252626;
+    padding: 15px;
+}
+
+div#decoded-inputs code {
+    white-space: pre-wrap;
+    font-size: 10px
+}
+
+.tab-desc {
+    color: #8D8D8D;
+    line-height: 16px;
+}
+
+.tab-desc .big {
+    font-size: 14px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.myoutputs {
+    margin-top: 15px;
+}
+
+.myoutputs .search-input {
+    margin-bottom: 10px;
+}
+
+.myoutputs .search-submit {
+    margin: 0;
+}
+
+/* Toggled State */
+
+input#toggle-1[type=checkbox]:checked~div#decoded-inputs {
+    display: block;
+}
+
+.more-details {
+    font-size: 12px;
+    margin-bottom: 40px;
+}
+
+.less-details {
+    font-size: 12px;
+    margin: 20px 0 40px;
 }
