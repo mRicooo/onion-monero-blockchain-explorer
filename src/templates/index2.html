@@ -1,113 +1,140 @@
-
-<div class="center">
-     <h3 style="font-size: 12px; margin-top: 20px">
-
-        Server time: {{server_timestamp}}  | <a href="/txpool">Transaction pool</a>
-         {{#enable_pusher}}
-            | <a href="/rawtx">Transaction pusher </a>
-         {{/enable_pusher}}
-         {{#enable_key_image_checker}}
-            | <a href="/rawkeyimgs">Key images checker</a>
-         {{/enable_key_image_checker}}
-         {{#enable_output_key_checker}}
-            | <a href="/rawoutputkeys">Output keys checker</a>
-         {{/enable_output_key_checker}}
-         {{#enable_autorefresh_option}}
-             |
-            {{#refresh}}
-                <a href="/">Autorefresh is ON (10 s)</a>
-            {{/refresh}}
-            {{^refresh}}
-               <a href="/autorefresh">Autorefresh is OFF</a>
-            {{/refresh}}
-         {{/enable_autorefresh_option}}
-         {{#testnet_url}}
-            | <a href="{{testnet_url}}">Go to testnet explorer</a>
-         {{/testnet_url}}
-         {{#stagenet_url}}
-            | <a href="{{stagenet_url}}">Go to stagenet explorer</a>
-         {{/stagenet_url}}
-         {{#mainnet_url}}
-            | <a href="{{mainnet_url}}">Go to mainnet explorer</a>
-         {{/mainnet_url}}
-         {{#testnet}}
-            | This is <span style="color:#ff6b62">testnet</span> blockchain
-         {{/testnet}}
-         {{#stagenet}}
-            | This is <span style="color:#ff6b62">stagenet</span> blockchain
-         {{/stagenet}}
-
-        </h3>
-
-
+<div class="main-info">
     {{#network_info}}
-        <h3 style="font-size: 12px; margin-top: 5px; margin-bottom: 3">
-            Network difficulty: {{difficulty}}
-            | Hard fork: v{{current_hf_version}}
-            | Hash rate: {{hash_rate}}
-            | Fee per byte: {{fee_per_kb}}
-            | Median block size limit: {{block_size_limit}} kB
-            {{^is_current_info}}
-            | Data from {{age}} {{age_format}} ago
-            {{/is_current_info}}
-        </h3>
+    <div>
+        <span class="main-info-title">Difficulty</span>
+        <span class="main-info-value">{{difficulty}}</span>
+    </div>
     {{/network_info}}
-
     {{#emission}}
-        <h3 style="font-size: 12px; margin-top: 2px">
-            Monero emission (fees) is {{amount}} ({{fee_amount}}) as of {{blk_no}} block
-        </h3>
+    <div>
+        <span class="main-info-title">Block</span>
+        <span class="main-info-value">{{blk_no}}</span>
+    </div>
     {{/emission}}
-
-
+    {{#network_info}}
+    <div>
+        <span class="main-info-title">Hashraste</span>
+        <span class="main-info-value">{{hash_rate}}</span>
+    </div>
+    {{/network_info}}
+    {{#emission}}
+    <div>
+        <span class="main-info-title">Emission</span>
+        <span class="main-info-value">{{amount}}</span>
+    </div>
+    {{/emission}}
 </div>
+{{#network_info}}
+<p class="sever-info">
+    Server time: {{server_timestamp}}
+    | <a href="/txpool">Transaction pool</a>
+    | Hard fork: v{{current_hf_version}}
+    | Fee per byte: {{fee_per_kb}}
+    | Median block size limit: {{block_size_limit}} kB
+    {{^is_current_info}}
+    | Data from {{age}} {{age_format}} ago
+    {{/is_current_info}}
+</p>
+{{/network_info}}
 
-    {{{mempool_info}}}
 
+{{/network_info}}
+
+{{{mempool_info}}}
+
+<div class="section-title">
     {{#is_page_zero}}
-      <h2 style="margin-bottom: 0px">Transactions in the last {{no_of_last_blocks}} blocks</h2>
+    <h2>Transactions in the last {{no_of_last_blocks}} blocks</h2>
     {{/is_page_zero}}
     {{^is_page_zero}}
-      <h2 style="margin-bottom: 0px">Transactions in older blocks<!--(height: {{height}})--></h2>
+    <h2>Transactions in older blocks
+        <!--(height: {{height}})-->
+    </h2>
     {{/is_page_zero}}
 
-    <h4 style="font-size: 14px; margin-top: 0px">(Median size of 100 blocks: {{blk_size_median}} kB)</h4>
+    <span>Median size of 100 blocks: {{blk_size_median}} kB</span>
+</div>
+<div class="section-content">
 
-    <div class="center">
+    <table class="section-table">
+        <thead>
+            <tr>
+                <th class="small">height</th>
+                <th class="small">age {{age_format}}
+                    <!--(Δm)-->
+                </th>
+                <th class="small">size [kB]
+                    <!--(Δm)-->
+                </th>
+                <th>transaction hash</th>
+                <th class="small">fee [&#181;&#x271]</th>
+                <th class="small">outputs</th>
+                <th class="small">in/out</th>
+                <th class="small">tx size [kB]</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#txs}}
+            <tr>
+                <td><a href="/block/{{height}}">{{height}}</a></td>
+                <td>{{age}}
+                    <!--{{time_delta}}-->
+                </td>
+                <td>{{blk_size}}</td>
+                <td><a href="/tx/{{hash}}">{{hash}}</a></td>
+                <td>{{fee_micro}}</td>
+                <td>{{sum_outputs_short}}</td>
+                <td>{{no_inputs}}/{{no_outputs}}</td>
+                <td>{{tx_size_short}}</td>
+            </tr>
+            {{/txs}}
+        </tbody>
+    </table>
 
-            <table class="center">
-                <tr>
-                    <td>height</td>
-                    <td>age {{age_format}}<!--(Δm)--></td>
-                    <td>size [kB]<!--(Δm)--></td>
-                    <td>transaction hash</td>
-                    <td>fee [&#181;&#x271]</td>
-                    <td>outputs</td>
-                    <td>in/out</td>
-                    <td>tx size [kB]</td>
-                </tr>
-                {{#txs}}
-                <tr>
-                    <td><a href="/block/{{height}}">{{height}}</a></td>
-                    <td>{{age}}<!--{{time_delta}}--></td>
-                    <td>{{blk_size}}</td>
-                    <td><a href="/tx/{{hash}}">{{hash}}</a></td>
-                    <td>{{fee_micro}}</td>
-                    <td>{{sum_outputs_short}}</td>
-                    <td>{{no_inputs}}/{{no_outputs}}</td>
-                    <td>{{tx_size_short}}</td>
-                </tr>
-                {{/txs}}
-            </table>
+    <div class="pagination">
+        {{^is_page_zero}}
+        <a href="/">
+            <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M2.77746 6.00229L6.91222 1.86734C7.02607 1.75376 7.0887 1.6019 7.0887 1.43997C7.0887 1.27796 7.02607 1.12619 6.91222 1.01243L6.54991 0.650295C6.43624 0.536354 6.28429 0.473633 6.12236 0.473633C5.96044 0.473633 5.80866 0.536354 5.6949 0.650295L0.77181 5.5733C0.6576 5.68742 0.595058 5.83991 0.595507 6.00202C0.595058 6.16484 0.65751 6.31715 0.77181 6.43136L5.69032 11.3496C5.80408 11.4635 5.95585 11.5263 6.11787 11.5263C6.27979 11.5263 6.43157 11.4635 6.54542 11.3496L6.90764 10.9875C7.14334 10.7518 7.14334 10.3681 6.90764 10.1325L2.77746 6.00229Z"
+                    fill="#7E67E1" />
+            </svg>
+            <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M2.77746 6.00229L6.91222 1.86734C7.02607 1.75376 7.0887 1.6019 7.0887 1.43997C7.0887 1.27796 7.02607 1.12619 6.91222 1.01243L6.54991 0.650295C6.43624 0.536354 6.28429 0.473633 6.12236 0.473633C5.96044 0.473633 5.80866 0.536354 5.6949 0.650295L0.77181 5.5733C0.6576 5.68742 0.595058 5.83991 0.595507 6.00202C0.595058 6.16484 0.65751 6.31715 0.77181 6.43136L5.69032 11.3496C5.80408 11.4635 5.95585 11.5263 6.11787 11.5263C6.27979 11.5263 6.43157 11.4635 6.54542 11.3496L6.90764 10.9875C7.14334 10.7518 7.14334 10.3681 6.90764 10.1325L2.77746 6.00229Z"
+                    fill="#7E67E1" />
+            </svg>
+        </a>
+        <a href="/page/{{prev_page}}">
+            <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M2.77746 6.00229L6.91222 1.86734C7.02607 1.75376 7.0887 1.6019 7.0887 1.43997C7.0887 1.27796 7.02607 1.12619 6.91222 1.01243L6.54991 0.650295C6.43624 0.536354 6.28429 0.473633 6.12236 0.473633C5.96044 0.473633 5.80866 0.536354 5.6949 0.650295L0.77181 5.5733C0.6576 5.68742 0.595058 5.83991 0.595507 6.00202C0.595058 6.16484 0.65751 6.31715 0.77181 6.43136L5.69032 11.3496C5.80408 11.4635 5.95585 11.5263 6.11787 11.5263C6.27979 11.5263 6.43157 11.4635 6.54542 11.3496L6.90764 10.9875C7.14334 10.7518 7.14334 10.3681 6.90764 10.1325L2.77746 6.00229Z"
+                    fill="#7E67E1" />
+            </svg>
+        </a>
 
-            <div id="pages" class="center" style="text-align: center;">
-             {{^is_page_zero}}
-               <a href="/page/{{prev_page}}">previous page</a> |
-               <a href="/">first page</a> |
-             {{/is_page_zero}}
-                current page: {{page_no}}/<a href="/page/{{total_page_no}}">{{total_page_no}}</a>
-                | <a href="/page/{{next_page}}">next page</a>
-            </div>
+        {{/is_page_zero}}
+        <span class="current">{{page_no}}/{{total_page_no}}</span>
+        <a href="/page/{{next_page}}">
+            <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M5.06465 5.99771L0.92989 10.1327C0.816039 10.2462 0.753408 10.3981 0.753408 10.56C0.753408 10.722 0.816039 10.8738 0.92989 10.9876L1.2922 11.3497C1.40587 11.4636 1.55782 11.5264 1.71975 11.5264C1.88167 11.5264 2.03345 11.4636 2.14721 11.3497L7.0703 6.4267C7.18451 6.31258 7.24705 6.16009 7.2466 5.99798C7.24705 5.83516 7.1846 5.68285 7.0703 5.56864L2.15179 0.650398C2.03803 0.536457 1.88626 0.473735 1.72424 0.473735C1.56232 0.473735 1.41055 0.536457 1.29669 0.650398L0.934473 1.01253C0.698774 1.24823 0.698774 1.63193 0.934473 1.86754L5.06465 5.99771Z"
+                    fill="#7E67E1" />
+            </svg>
 
+        </a>
+        <a href="/page/{{total_page_no}}">
+            <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M5.06465 5.99771L0.92989 10.1327C0.816039 10.2462 0.753408 10.3981 0.753408 10.56C0.753408 10.722 0.816039 10.8738 0.92989 10.9876L1.2922 11.3497C1.40587 11.4636 1.55782 11.5264 1.71975 11.5264C1.88167 11.5264 2.03345 11.4636 2.14721 11.3497L7.0703 6.4267C7.18451 6.31258 7.24705 6.16009 7.2466 5.99798C7.24705 5.83516 7.1846 5.68285 7.0703 5.56864L2.15179 0.650398C2.03803 0.536457 1.88626 0.473735 1.72424 0.473735C1.56232 0.473735 1.41055 0.536457 1.29669 0.650398L0.934473 1.01253C0.698774 1.24823 0.698774 1.63193 0.934473 1.86754L5.06465 5.99771Z"
+                    fill="#7E67E1" />
+            </svg>
+            <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M5.06465 5.99771L0.92989 10.1327C0.816039 10.2462 0.753408 10.3981 0.753408 10.56C0.753408 10.722 0.816039 10.8738 0.92989 10.9876L1.2922 11.3497C1.40587 11.4636 1.55782 11.5264 1.71975 11.5264C1.88167 11.5264 2.03345 11.4636 2.14721 11.3497L7.0703 6.4267C7.18451 6.31258 7.24705 6.16009 7.2466 5.99798C7.24705 5.83516 7.1846 5.68285 7.0703 5.56864L2.15179 0.650398C2.03803 0.536457 1.88626 0.473735 1.72424 0.473735C1.56232 0.473735 1.41055 0.536457 1.29669 0.650398L0.934473 1.01253C0.698774 1.24823 0.698774 1.63193 0.934473 1.86754L5.06465 5.99771Z"
+                    fill="#7E67E1" />
+            </svg>
+        </a>
     </div>
 
+</div>

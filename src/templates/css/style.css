@@ -1,141 +1,267 @@
-body {
+* {
     margin: 0;
     padding: 0;
-    color: white;
-    background-color: red;
+    box-sizing: border-box;
+    outline: none;
+}
+
+body {
+    color: #8D8D8D;
+    background-color: #1C1C1C;
+    font-size: 12px;
+    font-family: 'Mulish', Arial, Helvetica, sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    text-align: center;
+    color: #7E67E1;
 }
 
-.center {
-    margin: auto;
-    width: 96%;
-    /*border: 1px solid #73AD21;
-    padding: 10px;*/
-}
-
-tr, li, #pages, .info {
-    font-family: "Lucida Console", Monaco, monospace;
-    font-size  : 12px;
-    height: 22px;
-}
-
-#pages
-{
-    margin-top: 15px;
-}
-
-td {
-    text-align: center;
-}
-
-a:link {
-    text-decoration: none;
-    color: white;
-}
-
-a:visited {
-    text-decoration: none;
-    color: white;
-}
-
-a:hover {
+a, a:hover, a:visited {
+    color: #8D8D8D;
     text-decoration: underline;
-    color: white;
 }
 
-a:active {
-    text-decoration: none;
-    color: white;
+.container {
+    width: 92%;
+    max-width: 1200px;
+    margin: auto;
 }
 
-form {
-    display: inline-block;
-    text-align: center;
+/* header */
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    margin: 35px auto;
 }
 
-.style-1 input[type="text"] {
-    padding: 2px;
-    border: solid 1px #dcdcdc;
-    transition: box-shadow 0.3s, border 0.3s;
-}
-.style-1 input[type="text"]:focus,
-.style-1 input[type="text"].focus {
-    border: solid 1px #707070;
-    box-shadow: 0 0 5px 1px #969696;
+.header svg {
+    width: 148px;
 }
 
-
-.tabs {
-    position: relative;
-    min-height: 220px; /* This part sucks */
-    clear: both;
-    margin: 25px 0;
+.header-left {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    text-align: left;
 }
 
-.tab {
-    float: left;
+.header-left p {
+    font-size: 12px;
+    color: #8D8D8D;
+    margin-top: 5px;
 }
 
-.tab label {
-    background: black;
-    padding: 10px;
-    border: 1px solid #ccc;
-    margin-left: -1px;
-    position: relative;
-    left: 1px;
+.header h1 {
+    color: #7E67E1;
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 10px;
 }
 
-.tab [type=radio] {
-    display: none;
-}
-
-.content {
-    position: absolute;
-    top: 28px;
-    left: 0;
-    background: black;
-    right: 0;
-    bottom: 0;
-    padding: 20px;
-    border: 1px solid #ccc;
-}
-
-[type=radio]:checked ~ label {
-    background: #505050 ;
-    border-bottom: 1px solid white;
-    z-index: 2;
-}
-
-[type=radio]:checked ~ label ~ .content {
-    z-index: 1;
-}
-
-input#toggle-1[type=checkbox] {
-    position: absolute;
-    /*top: -9999px;*/
-    left: -9999px;
-
-}
-label#show-decoded-inputs {
-    /*-webkit-appearance: push-button;*/
-    /*-moz-appearance: button;*/
-    display: inline-block;
-    /*margin: 60px 0 10px 0;*/
-    cursor: pointer;
-    background-color: black;;
-    color: white;
+.header p {
     width: 100%;
-    text-align: center;
 }
 
-div#decoded-inputs{
-    display: none;
+.header-right {
+    width: 60%;
 }
 
-/* Toggled State */
-input#toggle-1[type=checkbox]:checked ~ div#decoded-inputs {
+.header-right form {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+}
+
+.search-input {
+    border: 2px solid #7E67E1;
+    width: 500px;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 20px;
+    border-radius: 20px;
+    background: none;
+    transition: 300ms all;
+    color: #8D8D8D;
+}
+
+.search-input:focus {
+    border-color: #6F7CE9;
+    background: #222;
+}
+
+.search-submit {
+    background: #7E67E1;
+    height: 40px;
+    border: none;
+    color: white;
+    border-radius: 20px;
+    margin-left: 13px;
+    padding: 0 40px;
+    cursor: pointer;
+    transition: 300ms all;
+}
+
+.search-submit:hover {
+    background: #6F7CE9;
+}
+
+/****************/
+
+/* main info */
+
+.main-info {
+    display: flex;
+    justify-content: space-between;
+}
+
+.main-info>div {
+    background: #252626;
+    padding: 16px 22px;
+    width: calc( 25% - 5px);
+    border-radius: 4px;
+}
+
+.main-info-title {
+    color: #6F7CE9;
+    font-size: 14px;
     display: block;
+}
+
+.main-info-value {
+    color: white;
+    font-size: 22px;
+    margin-top: 7px;
+    display: block;
+}
+
+.sever-info {
+    margin-top: 8px;
+}
+
+.server-info a {
+    color: #8D8D8D
+}
+
+/****************/
+
+/* section */
+
+.section-title {
+    display: flex;
+    justify-content: space-between;
+    margin: 40px 0 0;
+    align-items: center;
+}
+
+.section-title h2 {
+    color: #7E67E1;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.section-title span {
+    font-size: 12px;
+}
+
+.section-content {
+    margin-top: 5Px;
+}
+
+.section-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+}
+
+.section-table th {
+    height: 40px;
+    color: #6F7CE9;
+    text-align: center;
+    background: #252626;
+    font-weight: normal;
+}
+
+.section-table th:first-child {
+    border-radius: 4px 0 0 4px
+}
+
+.section-table th:last-child {
+    border-radius: 0 4px 4px 0;
+}
+
+.section-table .medium {
+    width: 100px;
+}
+
+.section-table .small {
+    width: 60px;
+}
+
+.section-table tbody td {
+    text-align: center;
+    padding: 12px 15px;
+}
+
+.section-table tbody tr+tr td {
+    border-top: 1px solid #333;
+}
+
+.section-table tbody td a {
+    color: white;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+/****************/
+
+/* pagination */
+
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 50px auto;
+    color: #7E67E1;
+    font-size: 14px;
+}
+
+.pagination a {
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    text-align: center;
+    background: #252626;
+    display: block;
+    text-align: center;
+    margin: 0 3px;
+    line-height: 26px;
+    text-decoration: none;
+}
+
+.pagination a svg {
+    display: inline-block;
+    vertical-align: middle;
+    text-decoration: none;
+    margin: 0 -2px;
+}
+
+.current {
+    margin: 0 8px
+}
+
+/****************/
+
+/* footer */
+
+.source-code {
+    text-align: center;
+    font-size: 12px;
+    margin-bottom: 20px;
+}
+
+/****************/
+
+div#decoded-inputs {
+    display: none;
 }

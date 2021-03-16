@@ -1,18 +1,22 @@
-<h2 style="margin-bottom: 0px">
-   Transaction pool
-</h2>
-<h4 style="font-size: 12px; margin-top: 0px">(no of txs: {{mempool_size}}, size: {{mempool_size_kB}} kB, updated every {{ mempool_refresh_time }} seconds)</h4>
-<div class="center">
-    
-      <table class="center" style="width:80%">
+<div class="section-title">
+    <h2> Transaction pool</h2>
+    <span>(no of txs: {{mempool_size}}, size: {{mempool_size_kB}} kB, updated every {{ mempool_refresh_time }}
+        seconds)</span>
+</div>
+
+<div class="section-content">
+    <table class="section-table">
+        <thead>
             <tr>
-                <td>age [h:m:s]</td>
-                <td>transaction hash</td>
-                <td>fee/per_kB [&#181;&#x271]</td>
+                <th class="medium first">age [h:m:s]</th>
+                <th>transaction hash</th>
+                <th class="medium">fee/per_kB [&#181;&#x271]</th>
                 <!--<td>outputs</td>-->
-                <td>in/out</td>
-                <td>tx size [kB]</td>
+                <th class="medium">in/out</th>
+                <th class="medium last">tx size [kB]</th>
             </tr>
+        </thead>
+        <tbody>
             {{#mempooltxs}}
             <tr>
                 <td>{{age}}</td>
@@ -23,14 +27,15 @@
                 <td>{{txsize}}</td>
             </tr>
             {{/mempooltxs}}
-        </table>
+        </tbody>
+    </table>
 
     {{^mempool_fits_on_front_page}}
-      {{#partial_mempool_shown}}
-      <div class="center" style="text-align: center; margin-bottom: 10px">
-          <a href="/txpool">Only {{no_of_mempool_tx_of_frontpage}} txs shown. Click here to see all of them</a>
-      </div>
-      {{/partial_mempool_shown}}
+    {{#partial_mempool_shown}}
+    <div class="center" style="text-align: center; margin-bottom: 10px">
+        <a href="/txpool">Only {{no_of_mempool_tx_of_frontpage}} txs shown. Click here to see all of them</a>
+    </div>
+    {{/partial_mempool_shown}}
 
     {{/mempool_fits_on_front_page}}
 
