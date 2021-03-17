@@ -21,6 +21,15 @@ a, a:hover, a:visited {
     text-decoration: underline;
 }
 
+ul, li {
+    list-style: none
+}
+
+.title-white {
+    color: white;
+    font-size: 18px;
+}
+
 .container {
     width: 92%;
     max-width: 1200px;
@@ -252,6 +261,11 @@ a, a:hover, a:visited {
     margin: 4px 0;
 }
 
+.section-infos .content {
+    color: #8D8D8D;
+    line-height: 16px;
+}
+
 #tx-hash, #tx-hash-error {
     font-size: 18px;
     color: white
@@ -347,7 +361,7 @@ a, a:hover, a:visited {
     margin-left: 1px
 }
 
-.content {
+.tab-content {
     position: absolute;
     top: 30px;
     left: 0;
@@ -363,7 +377,7 @@ a, a:hover, a:visited {
     z-index: 2;
 }
 
-[type=radio]:checked~label~.content {
+[type=radio]:checked~label~.tab-content {
     z-index: 1;
 }
 
@@ -398,7 +412,7 @@ div#decoded-inputs code {
     line-height: 16px;
 }
 
-.tab-desc .big {
+.big {
     font-size: 14px;
     margin-bottom: 5px;
     font-weight: bold;
