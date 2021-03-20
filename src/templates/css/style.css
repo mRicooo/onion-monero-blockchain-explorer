@@ -82,7 +82,7 @@ ul, li {
     font-size: 14px;
 }
 
-.search-input {
+.search-input, .search-textarea {
     border: 2px solid #7E67E1;
     width: 500px;
     height: 40px;
@@ -94,7 +94,11 @@ ul, li {
     color: #8D8D8D;
 }
 
-.search-input:focus {
+.search-textarea {
+    height: auto;
+}
+
+.search-input:focus, .search-textarea:focus {
     border-color: #6F7CE9;
     background: #222;
 }
@@ -181,6 +185,10 @@ ul, li {
     width: 100%;
     border-collapse: collapse;
     font-size: 12px;
+}
+
+.section-table+.section-table {
+    margin-top: 30px;
 }
 
 .section-table th {

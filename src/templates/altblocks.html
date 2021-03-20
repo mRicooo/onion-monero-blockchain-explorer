@@ -1,16 +1,24 @@
-<h2 style="margin-bottom: 0px">
-   Alternative blocks
-</h2>
-<h4 style="font-size: 14px; margin-top: 0px">(no of alt blocks: {{no_alt_blocks}})</h4>
-<div class="center">
-    
-      <table class="center" style="width:80%">
+<div class="section-title">
+    <h2 style="margin-bottom: 0px">
+        Alternative blocks
+    </h2>
+    <span>(no of alt blocks: {{no_alt_blocks}})</span>
+</div>
+
+
+
+<div class="section-content">
+
+    <table class="section-table">
+        <thead>
             <tr>
-                <td>height</td>
-                <td>age</td>
-                <td>hash</td>
-                <td>txs no</td>
+                <th>height</th>
+                <th>age</th>
+                <th>hash</th>
+                <th>txs no</th>
             </tr>
+        </thead>
+        <tbody>
             {{#blocks}}
             <tr>
                 <td>{{height}}</td>
@@ -19,7 +27,8 @@
                 <td>{{no_of_txs}}</td>
             </tr>
             {{/blocks}}
-        </table>
+        </tbody>
+    </table>
 
 
 </div>

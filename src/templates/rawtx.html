@@ -1,9 +1,5 @@
-<div>
-
-    <div class="center">
-        <br/>
-        <h3 class="center">Transaction Pusher</h3>
-    </div>
+<div class="section-infos">
+        <h3 class="title-white">Transaction Pusher</h3>
 
 
     <div class="center">
@@ -16,16 +12,16 @@
             (In Linux, can get the raw tx data: <i>cat raw_monero_tx | xclip -selection clipboard</i>)<br/>
             (In Windows, can get the raw tx data: <i>certutil.exe -encode -f raw_monero_tx encoded.txt & type "encoded.txt" | clip</i>)<br/>
 
-            <textarea name="rawtxdata" rows="20" cols="80"></textarea>
+            <textarea name="rawtxdata" rows="20" cols="80" class="search-textarea"></textarea>
             <br/>
             Note: data is sent to the server, as the calculations are done on the server side
             <br/>
             Note: "check" does not work for the hex string of raw transaction
             <br/>
-            <input type="submit" name="action" value="check">
+            <input type="submit" name="action" value="check" class="search-input">
             &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;
             &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;
-            <input type="submit" name="action" value="push">
+            <input type="submit" name="action" value="push" class="search-submit">
         </form>
     </div>
 
