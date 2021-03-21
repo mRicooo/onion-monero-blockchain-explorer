@@ -10,7 +10,8 @@
 </div>
 <div class="section-content">
     
-    <table class="section-table">
+    <div class="scroll-table">
+    <table  class="section-table">
         <tr>
             <td>Timestamp [UCT] (epoch):</td><td>{{blk_timestamp}} ({{blk_timestamp_epoch}})</td>
             <td>Age {{age_format}}:</td><td>{{blk_age}}</td>
@@ -37,10 +38,11 @@
             {{/is_randomx}}
             <td></td>
         </tr>
-    </table>
+    </table></div>
     <br />
     <h3>Miner reward transaction</h3>
-    <table class="section-table">
+    <div class="scroll-table">
+    <table  class="section-table">
         <thead>
             <tr>
                 <th>hash</th>
@@ -59,13 +61,14 @@
             </tr>
         {{/coinbase_txs}}
         </tbody>
-    </table>
+    </table></div>
 
 
     <br />
     <h3>Transactions ({{no_txs}})</h3>
     {{#have_txs}}
-        <table class="section-table">
+        <div class="scroll-table">
+    <table  class="section-table">
             <thead>
                 <tr>
                     <th>hash</th>
@@ -88,7 +91,7 @@
                 </tr>
             {{/blk_txs}}
             </tbody>
-        </table>
+        </table></div>
     {{/have_txs}}    
 
 

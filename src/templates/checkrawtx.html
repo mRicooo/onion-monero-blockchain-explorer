@@ -51,7 +51,8 @@
 
                     <h4>Outputs selected for this tx (total: {{sum_outputs_amounts}})</h4>
                     {{#dest_sources}}
-                                <table class="section-table">
+                                <div class="scroll-table">
+    <table  class="section-table">
                                     <thead>
                                     <tr>
                                         <th>Output Index</th>
@@ -78,7 +79,7 @@
                                        <!-- <tr><td colspan="3">&nbsp;  &nbsp; ctkey: {{ctkey}}</td></tr>-->
                                     {{/outputs}}
                                     </tbody>
-                                </table>
+                                </table></div>
                     {{/dest_sources}}
                     <h4>Change to be returned to the sender: {{change_amount}}</h4>
                 </div>

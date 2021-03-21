@@ -5,7 +5,8 @@
 </div>
 
 <div class="section-content">
-    <table class="section-table">
+    <div class="scroll-table">
+    <table  class="section-table">
         <thead>
             <tr>
                 <th class="medium first">age [h:m:s]</th>
@@ -28,7 +29,7 @@
             </tr>
             {{/mempooltxs}}
         </tbody>
-    </table>
+    </table></div>
 
     {{^mempool_fits_on_front_page}}
     {{#partial_mempool_shown}}

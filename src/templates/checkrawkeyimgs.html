@@ -16,7 +16,8 @@
     <h4>Viewkey: {{viewkey}}</h4>
 
     <form action="/genrawkeyimgs" method="post">
-        <table class="section-table">
+        <div class="scroll-table">
+    <table  class="section-table">
             <thead>
                 <tr>
                     <th>Key no.</th>
@@ -41,7 +42,7 @@
                 </tr>
                 {{/key_imgs}}
             </tbody>
-        </table>
+        </table></div>
         <br />
     </form>
     {{/has_error}}

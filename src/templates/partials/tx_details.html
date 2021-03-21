@@ -26,7 +26,8 @@
 
 
 <div class="section-infos">
-    <table class="section-table-alt">
+    <div class="scroll-table">
+    <table  class="section-table-alt">
         {{^have_raw_tx}}
         <tr>
             <td>Timestamp: {{blk_timestamp_uint}}</td>
@@ -49,7 +50,7 @@
         <tr>
             <td colspan="3">Extra: {{extra}}</td>
         </tr>
-    </table>
+    </table></div>
 </div>
 
 
@@ -58,7 +59,8 @@
     <h2>{{outputs_no}} output(s) for total of {{outputs_xmr_sum}} upx</h2>
 </div>
 <div class="section-content">
-    <table class="section-table">
+    <div class="scroll-table">
+    <table  class="section-table">
         <thead>
             <tr>
                 <th class="left">stealth address</th>
@@ -75,7 +77,7 @@
             </tr>
             {{/outputs}}
         </tbody>
-    </table>
+    </table></div>
 </div>
 
 {{^have_raw_tx}}
@@ -175,7 +177,8 @@
     {{/show_part_of_inputs}}
 
     <div class="section-content">
-        <table class="section-table">
+        <div class="scroll-table">
+    <table  class="section-table">
             {{#inputs}}
             <tr>
                 <td style="text-align: left;">
@@ -196,7 +199,8 @@
             <tr>
                 <td colspan="2">
                     {{#enable_mixins_details}}
-                    <table style="width:100%; margin-bottom:20px">
+                    <div class="scroll-table">
+    <table  style="width:100%; margin-bottom:20px">
                         <tr>
                             <td>ring members</td>
                             {{#have_raw_tx}}
@@ -227,10 +231,11 @@
                             <td>{{mix_age}}</td>
                         </tr>
                         {{/mixins}}
-                    </table>
+                    </table></div>
                     {{/enable_mixins_details}}
                     {{^enable_mixins_details}}
-                    <table style="width:100%; margin-bottom:20px">
+                    <div class="scroll-table">
+    <table  style="width:100%; margin-bottom:20px">
                         <tr>
                             <td>ring members</td>
                             {{#have_raw_tx}}
@@ -252,7 +257,7 @@
                             <td>{{mix_blk}}</td>
                         </tr>
                         {{/mixins}}
-                    </table>
+                    </table></div>
                     {{/enable_mixins_details}}
                 </td>
             </tr>
@@ -262,7 +267,8 @@
 
             <tr>
                 <td colspan="2">
-                    <table style="width:100%; margin-bottom:20px">
+                    <div class="scroll-table">
+    <table  style="width:100%; margin-bottom:20px">
                     <tr>
                     <td>Ring signature</td>
                     </tr>
@@ -271,7 +277,7 @@
                         <td>{{ring_sig}}</td>
                     </tr>
                     {{/ring_sigs}}
-                </table>
+                </table></div>
             </td>
             </tr>
 
@@ -279,7 +285,7 @@
     -->
 
             {{/inputs}}
-        </table>
+        </table></div>
 
 
     </div>

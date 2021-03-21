@@ -165,6 +165,7 @@ ul, li {
     justify-content: space-between;
     margin: 40px 0 0;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .section-title h2 {
@@ -179,6 +180,10 @@ ul, li {
 
 .section-content {
     margin-top: 5Px;
+}
+
+.scroll-table {
+    overflow: auto;
 }
 
 .section-table {
@@ -267,6 +272,7 @@ ul, li {
 .section-infos>span {
     display: block;
     margin: 4px 0;
+    overflow-wrap: break-word;
 }
 
 .section-infos .content {
@@ -452,4 +458,54 @@ input#toggle-1[type=checkbox]:checked~div#decoded-inputs {
 .less-details {
     font-size: 12px;
     margin: 20px 0 40px;
+}
+
+@media (max-width:1200px) {
+    .search-input, .search-textarea {
+        width: 300px;
+    }
+}
+
+@media (max-width:768px) {
+    .header {
+        flex-direction: column;
+        margin: 15px auto 25px
+    }
+    .header h1 {
+        margin: 0;
+        font-size: 16px;
+    }
+    .header-left p {
+        font-size: 11px;
+    }
+    .header-right {
+        width: 100%;
+        margin-top: 15px;
+    }
+    .header .search-input {
+        width: 70%
+    }
+    .search-submit {
+        padding: 0 20px;
+        font-size: 12px;
+        margin-left: 10px;
+    }
+    .main-info>div {
+        width: calc( 50% - 5px)
+    }
+    .section-title h2 {
+        font-size: 16px;
+    }
+    .title-white {
+        font-size: 16px;
+    }
+    .search-input, .search-textarea {
+        max-width: 100%;
+    }
+    .tabs {
+        min-height: 380px;
+    }
+    .pagination {
+        margin: 30px 0;
+    }
 }
