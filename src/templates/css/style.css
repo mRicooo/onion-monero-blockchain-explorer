@@ -336,6 +336,24 @@ ul, li {
 
 /* footer */
 
+.footer-links {
+    margin: 20px auto;
+    text-align: center;
+    padding: 20px;
+    border-top: 1px solid #252626;
+    border-bottom: 1px solid #252626;
+}
+
+.footer-links a {
+    margin: 0 5px;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
 .source-code {
     text-align: center;
     font-size: 12px;
