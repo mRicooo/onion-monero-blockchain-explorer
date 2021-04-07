@@ -508,8 +508,12 @@ input#toggle-1[type=checkbox]:checked~div#decoded-inputs {
         font-size: 12px;
         margin-left: 10px;
     }
+    .main-info {
+        flex-wrap: wrap
+    }
     .main-info>div {
-        width: calc( 50% - 5px)
+        width: calc( 50% - 5px);
+        margin-bottom: 10px;
     }
     .section-title h2 {
         font-size: 16px;
